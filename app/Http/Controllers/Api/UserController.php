@@ -11,6 +11,7 @@ use App\Models\User;
 
 
 class UserController extends Controller
+
 {
 
     //function register
@@ -109,6 +110,16 @@ class UserController extends Controller
             
         }
 
+    }
+
+    //untuk logout
+    public function logout(){
+        $user = Auth::user();
+        $user->tokens()->delete();
+        return response()->json([
+            'status'=> true,
+            'message' => 'Anda Berhasil Logout'
+        ]);
     }
 
 

@@ -23,9 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //untuk register maka input = post 
 Route::post('/registrasi', [UserController::class, 'register']);
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('todos', ToDoController::class);
+    Route::get('/logout', [UserController::class, 'logout']);
 });
 
